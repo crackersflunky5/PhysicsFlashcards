@@ -1,0 +1,1054 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Image Flashcards</title>
+  <style>
+.expand-btn {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 2px 6px;
+  z-index: 2;
+}
+
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 999;
+  flex-direction: column;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal img {
+  max-width: 90vw;
+  max-height: 80vh;
+  object-fit: contain;
+}
+
+#close-modal {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+
+
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f4f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 20px;
+      margin: 0;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      width: 100%;
+      max-width: 1000px;
+    }
+    .flashcard {
+      perspective: 1000px;
+    }
+    .flashcard-inner {
+      position: relative;
+      width: 100%;
+      padding-top: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
+      cursor: pointer;
+    }
+    .flashcard.flipped .flashcard-inner {
+      transform: rotateY(180deg);
+    }
+    .flashcard-front,
+    .flashcard-back {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      backface-visibility: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      padding: 10px;
+      background: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+    .flashcard-front img,
+    .flashcard-back img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+    .flashcard-back {
+      transform: rotateY(180deg);
+      background-color: #e0f7fa;
+    }
+  </style>
+</head>
+<body>
+  <h1>Image Flashcards</h1>
+  <div class="grid">
+    
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_001/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_001/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_002/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_002/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_003/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_003/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_004/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_004/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_005/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_005/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_006/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_006/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_007/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_007/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_008/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_008/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_009/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_009/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_010/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_010/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_011/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_011/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_012/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_012/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_013/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_013/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_014/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_014/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_015/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_015/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_016/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_016/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_017/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_017/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_018/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_018/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_019/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_019/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_020/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_020/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_021/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_021/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_022/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_022/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_023/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_023/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_024/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_024/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_025/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_025/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_026/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_026/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_027/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_027/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_028/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_028/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_029/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_029/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_030/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_030/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_031/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_031/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_032/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_032/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_033/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_033/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_034/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_034/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_035/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_035/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_036/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_036/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_037/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_037/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_038/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_038/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_039/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_039/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_040/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_040/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_041/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_041/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_042/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_042/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_043/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_043/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_044/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_044/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_045/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_045/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_046/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_046/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_047/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_047/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_048/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_048/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_049/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_049/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_050/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_050/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_051/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_051/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_052/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_052/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_053/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_053/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_054/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_054/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_055/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_055/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_056/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_056/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_057/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_057/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_058/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_058/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_059/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_059/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_060/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_060/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_061/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_061/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_062/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_062/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_063/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_063/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_064/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_064/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_065/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_065/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_066/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_066/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_067/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_067/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_068/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_068/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_069/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_069/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_070/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_070/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_071/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_071/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_072/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_072/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_073/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_073/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_074/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_074/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_075/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_075/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_076/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_076/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_077/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_077/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_078/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_078/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_079/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_079/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_080/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_080/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_081/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_081/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <img src="image_flashcard_pairs/pair_082/question.png" alt="Question">
+        </div>
+        <div class="flashcard-back">
+          <img src="image_flashcard_pairs/pair_082/answer.png" alt="Answer">
+        </div>
+      </div>
+    </div>
+        
+  </div>
+
+    <div id='fullscreen-modal' class='modal hidden'>
+    <span id='close-modal'>&times;</span>
+    <img id='fullscreen-img' src='' alt='Flashcard' />
+  </div>
+  <script>
+    document.querySelectorAll('.flashcard').forEach(card => {
+      card.addEventListener('click', () => {
+        card.classList.toggle('flipped');
+      });
+    });
+
+    document.querySelectorAll('.expand-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const img = btn.closest('.flashcard-front').querySelector('img');
+        document.getElementById('fullscreen-img').src = img.src;
+        document.getElementById('fullscreen-modal').classList.remove('hidden');
+      });
+    });
+
+    document.getElementById('close-modal').addEventListener('click', () => {
+      document.getElementById('fullscreen-modal').classList.add('hidden');
+    });
+
+    document.getElementById('fullscreen-modal').addEventListener('click', () => {
+      document.getElementById('fullscreen-modal').classList.add('hidden');
+    });
+  </script>
+</body>
+</html>
+    
